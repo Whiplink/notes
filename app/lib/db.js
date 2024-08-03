@@ -22,7 +22,7 @@ async function dbConnect() {
     const opts = {
       bufferCommands: false
     }
-    cached.promise = (await mongoose.connect(MONGODB_URI, opts)).isObjectIdOrHexString(mongoose => {
+    cached.promise = await mongoose.connect(MONGODB_URI, opts).then(mongoose => {
       console.log('Db connected')
       return mongoose
     })
